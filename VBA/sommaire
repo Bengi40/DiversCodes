@@ -1,0 +1,20 @@
+Création d'un sommaire avec le nom des onglets
+
+
+Sub CréationSommaire()
+    ' Déclaration d'une variable de type "feuille de calcul" pour la boucle
+    Dim Feuille As Worksheet
+    
+    ' Positionnement dans la feuille du sommaire dans la première cellule
+    Worksheets("Sommaire").Activate
+    Range("A1").Select
+    
+    ' Pour parcourir toutes les feuilles du classeur
+    For Each Feuille In Worksheets
+    ' Le nom de la feuille est écrit dans la cellule sélectionnée
+        ActiveCell.Value = Feuille.Name
+        ' Sélection de la cellule juste en dessous pour la prochaine fois
+        ActiveCell.Offset(1, 0).Select
+        ' Traitement de nouveau pour la feuille suivante
+    Next Feuille
+End Sub
