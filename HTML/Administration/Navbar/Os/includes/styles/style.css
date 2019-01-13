@@ -56,15 +56,23 @@ a{
 	bottom: 40px;
 	left: 30px;
 	display: none;
+	padding-bottom: 10px;
 }
 .menu1{
 	position: relative;
 	width: 250px;
 	height: 300px;
-	margin-bottom: 5px;
 	background-color: rgba(167,136,129,1);
 	border:5px solid silver;
 	border-radius: 10px;
+}
+.container-menu::after{
+	content:"";
+	border-left:10px solid transparent;
+	border-right:10px solid transparent;
+	border-top: 10px solid silver;
+	position: absolute;
+	margin-left: 20px
 }
 .liste1{
 	display: flex;
