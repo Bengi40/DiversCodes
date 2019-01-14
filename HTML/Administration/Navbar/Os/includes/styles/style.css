@@ -40,13 +40,21 @@ a{
 }
 .enteteMenu{
 	display: flex;
-	width: 100px;
+	width: 150px;
 	color: white;
 	font-weight: bold;
 	font-size: 20px;
 	justify-content: center;
 	align-items: center;
 	border-right: 2px solid white;
+}
+.enteteMenuUp::after{
+	content:"";
+	margin-left: 5px;
+	border-left:5px solid transparent;
+	border-right:5px solid transparent;
+	border-bottom: 10px solid black;
+	position: absolute;
 }
 .enteteMenu:hover .container-menu{
 	display: block;
@@ -72,7 +80,7 @@ a{
 	border-right:10px solid transparent;
 	border-top: 10px solid silver;
 	position: absolute;
-	margin-left: 20px
+	margin-left: 20px;
 }
 .liste1{
 	display: flex;
@@ -86,26 +94,40 @@ a{
 	color: black;
 	font-weight: bold;
 }
+.liste1::after{
+	content:"";
+	border-top:5px solid transparent;
+	border-bottom:5px solid transparent;
+	border-left: 5px solid black;
+	position: absolute;
+	margin-left: 220px;
+	align-content: flex-end;
+
+}
 .liste1:hover .menu2{
 	display: block;
 }
 .menu2{
-	position: absolute;
+	position: relative;
 	display: none;
 	width: 250px;
-	right: -200px;
+	height: auto;
+	left: 178px;
 	top:0;
 	background-color: rgba(255,255,255,0.8);
 	align-items: flex-end;
-	border: 2px solid silver;
+	border: 5px solid silver;
 	border-radius: 10px;
 }
+
 .liste2{
-	display: flex;
 	padding-left: 20px;
 	height: 30px;
 	font: 16px;
 	align-items: center;
+}
+.liste2:hover{
+	background-color: white;
 }
 
 /* Horloge */
