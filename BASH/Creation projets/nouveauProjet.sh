@@ -1,28 +1,59 @@
 #!/bin/bash
+#v2.0.0
+#
+#nouveauProjet.sh et le dossier nouveauProjet a mettre a la racine de son serveur de dev uniquement
+#
+#
+
 $projet
 $bootstrap
+$typeProjet
+
+function droitDossier
+{
+	chmod -R 777 $projet
+}
 
 function creationDossier
-
 {
 	echo "Quel est le nom du nouveau projet ?"
 	read projet
 	#Creation du dossier du projet dans /var/www/html/
-	mkdir /var/www/html/$projet
+	mkdir $projet
+	droitDossier
 }
-echo "Projet Bootstrap ? o ou n"
-read bootstrap
+function angular
+{
+	echo "Quel est le nom du nouveau projet ?"
+	read projet
+	ng new $projet
+	chmod -R 777 $projet
+	cd $projet
+	ng serve -o
+}
+function bootstrap
+{
+	creationDossier
+	cp -R nouveauProjet/bootstrap/* $projet
+	echo "Projet creer"
+}
+function web
+{
+	creationDossier
+	cp -R nouveauProjet/site/* $projet
+	echo "Projet creer"
+}
 
-if [ $bootstrap = "o" ]
-then
-	creationDossier
-	cp -R /var/www/html/scriptsBach/nouveauProjet/bootstrap/* /var/www/html/$projet
-	echo "Projet creer"
-elif [ $bootstrap = "n" ]
-then
-	creationDossier
-	cp -R /var/www/html/scriptsBach/nouveauProjet/site/* /var/www/html/$projet
-	echo "Projet creer"
-else
-	echo "Pas de nouveau projet"
-fi
+echo "Quel Type de projet voulez vouz faire ? Angular(a), Bootstrap(b), Web Simple(w) ?"
+read typeProjet
+
+case $typeProjet in
+		[aA]*)
+			angular;;
+		[bB]*)
+			bootstrap;;
+		[wW]*)
+			web;;
+		*)
+			echo "Je connais pas ce type";;
+esac
