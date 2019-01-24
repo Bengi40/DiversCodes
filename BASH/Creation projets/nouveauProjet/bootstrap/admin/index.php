@@ -1,7 +1,11 @@
+<?php
+	require_once('../config.php');
+	require_once('../functions.php');
+?>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>CV Benjamin</title>
+    <title></title>
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
