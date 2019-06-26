@@ -57,3 +57,4 @@ case $typeProjet in
 		*)
 			echo "Je connais pas ce type";;
 esac
+
