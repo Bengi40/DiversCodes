@@ -1,0 +1,18 @@
+//recup repository
+  git clone "lien SSH"
+
+// Nouvelle branche :
+  git checkout -b nomDeLaBrnache
+
+// Récupération nouvelle branche
+  git fetch
+  git checkout --track origin/nomDeLaBrnache
+
+// Suppression dernier commit sans push :
+     git reset --hard HEAD^
+
+// Soucis avec le gitignore
+  git rm -r --cached .
+  git add .
+  git commit -m ".gitignore est maintenant fonctionnel"
+
