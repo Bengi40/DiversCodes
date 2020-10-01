@@ -1,0 +1,47 @@
+// Créer un fichier configBdd.properties dans src/main/resources
+// Puis coller le suivant : 
+//
+// urlJdbc=jdbc:postgresql://IP:5432/database  
+// userName=user
+// userPassword=mdpUser
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
+
+import javax.sql.DataSource;
+
+import org.apache.commons.dbcp2.BasicDataSource;
+
+public class DataSourceProvider {
+
+	private static BasicDataSource singleDataSource;
+	
+	public static DataSource getSingleDataSourceInstance() throws IOException {
+		
+		Properties prop = new Properties();
+		InputStream input = DataSourceProvider.class.getClassLoader().getResourceAsStream("configBdd.properties");
+		prop.load(input);
+		try {
+			
+			if (singleDataSource == null ) {
+				singleDataSource = new BasicDataSource();
+				singleDataSource.setInitialSize(5);
+				singleDataSource.setUrl(prop.getProperty("urlJdbc"));
+				singleDataSource.setUsername(prop.getProperty("userName"));
+		        singleDataSource.setPassword(prop.getProperty("userPassword"));
+		        
+		        System.out.println(prop.getProperty("urlJdbc") + " " + prop.getProperty("userName") );
+			}
+		} finally {
+			if (input != null) {
+				try {
+					input.close();
+				} catch (final IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return singleDataSource;
+	}		
+}
